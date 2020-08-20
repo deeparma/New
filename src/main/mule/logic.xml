@@ -32,9 +32,11 @@ output application/json
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="554b0550-c072-4ff6-a3b9-dd69d8d3dad1" message='#["my_payload": payload]'/>
     </flow>
 	<flow name="get:\platform\sites\(siteId)\patients:api-config">
-	<set-variable value='#[(read(attributes.headers.sessionRoles, "application/json")) distinctBy $]' doc:name="Session Roles" doc:id="d0f423cc-93b8-43b7-8832-5161735856f9" variableName="sessionRoles" />
+		<set-variable value='#[(read(attributes.headers.assignedRoles, "application/json")) distinctBy $]' doc:name="Session Roles" doc:id="d0f423cc-93b8-43b7-8832-5161735856f9" variableName="sessionRoles" /> 
+		
 		<flow-ref doc:name="mySQLBaseParams" doc:id="d86130ba-7895-4244-a21d-5208b4fb020a" name="mySQLBaseParams"/>
 		<ee:transform doc:name="Set sql sort" doc:id="49129af5-5141-48b4-a57f-37a7bff3459a">
 			<ee:message>
@@ -582,7 +584,7 @@ id: vars.patientId
 		</choice>
 </flow>
     <flow name="get:\platform\sites\(siteId)\patients\(patientId):api-config">
-		<set-variable value='#[(read(attributes.headers.sessionRoles, "application/json")) distinctBy $]' doc:name="Session Roles" doc:id="133d4bf9-501a-4a0f-8414-0b11f2168d7e" variableName="sessionRoles" />
+		<set-variable value='#[(read(attributes.headers.assignedRoles, "application/json")) distinctBy $]' doc:name="Session Roles" doc:id="133d4bf9-501a-4a0f-8414-0b11f2168d7e" variableName="sessionRoles" />
 		<set-variable value="#[attributes.uriParams.patientId]" doc:name="Set patientId" doc:id="b85f2804-8009-4f24-a1b5-ea6cf9078430" variableName="patientId"/>
 		<set-variable value="#[attributes.uriParams.siteId]" doc:name="Set siteId" doc:id="bdef194f-aeb6-4182-83af-4a98dee3b909" variableName="siteId"/>
 		<db:select doc:name="Select Patient" doc:id="853d9d85-aa46-4509-8913-d13d6b5908a2" config-ref="Database_Config" target="selectPatientResult">
@@ -859,8 +861,11 @@ where siteUuid = :siteId and uuid = :patientId&quot;
 			<otherwise >
 				<try doc:name="Try" doc:id="28b3967a-e9f7-4702-916d-af8c4a8692eb" transactionalAction="ALWAYS_BEGIN">
 					<db:delete doc:name="Delete Patient" doc:id="7ee2746b-3698-4378-b8c7-1d14bc31b6ea" config-ref="Database_Config" transactionalAction="ALWAYS_JOIN" target="deletePatientResult">
-			<db:sql>delete from `Patients` where `siteUuid` = :siteId and `uuid` = :patientId</db:sql>
-			<db:input-parameters><![CDATA[#[{"siteId": vars.siteId,"patientId": vars.patientId}]]]></db:input-parameters>
+			<db:sql><![CDATA[#["delete from `Patients` where `siteUuid` = :siteId and `uuid` = :patientId"]]]></db:sql>
+			<db:input-parameters><![CDATA[#[{
+"siteId": vars.siteId,
+"patientId": vars.patientId
+}]]]></db:input-parameters>
 		</db:delete>
 					<set-variable value='#[%dw 2.0
 output application/json

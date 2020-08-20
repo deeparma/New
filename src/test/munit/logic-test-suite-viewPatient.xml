@@ -29,7 +29,7 @@
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="d725c504-9ca1-4d50-99c4-f8c6673a4232" >
-				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}]" />
+				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}++{headers:{'assignedRoles':'[&quot;Sponsor&quot;]'}}]" />
 				<munit:variables >
 					<munit:variable key="assignedRoles" value='#[["Sponsor"]]' />
 					<munit:variable key="assignedSites" value='#[["1"]]' />
@@ -69,7 +69,7 @@
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="26df3ec9-34ee-4f06-95af-301a94f895ea" >
-				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}]" />
+				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}++{headers:{'assignedRoles':'[&quot;Sponsor&quot;]'}}]" />
 				<munit:variables >
 					<munit:variable key="assignedRoles" value='#[["Sponsor"]]' />
 					<munit:variable key="assignedSites" value='#[["1"]]' />
@@ -107,7 +107,7 @@
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="812f5721-777d-4128-98b0-08e85aeb866c" >
-				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}]" />
+				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}++{headers:{'assignedRoles':'[&quot;Investigator&quot;]'}}]" />
 				<munit:variables >
 					<munit:variable key="assignedRoles" value='#[["Investigator"]]' />
 					<munit:variable key="assignedSites" value='#[["1"]]' />
@@ -160,7 +160,7 @@
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="609cf94f-8cc6-47d6-929c-194baed390a8" >
-				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}]" />
+				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}++{headers:{'assignedRoles':'[&quot;Nurse&quot;]'}}]" />
 				<munit:variables >
 					<munit:variable key="assignedRoles" value='#[["Nurse"]]' />
 					<munit:variable key="assignedSites" value='#[["1"]]' />
@@ -214,7 +214,7 @@
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="be8530d3-1ead-4c18-8db1-6946f943c02b" >
-				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}]" />
+				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}++{queryParams:{'limit':100,'start':1,'sort':'id:asc'}}++{headers:{'assignedRoles':'[&quot;Nurse&quot;]'}}]" />
 				<munit:variables >
 					<munit:variable key="assignedRoles" value='#[["Nurse"]]' />
 					<munit:variable key="assignedSites" value='#[["1"]]' />

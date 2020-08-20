@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/dynamodb http://www.mulesoft.org/schema/mule
 		<db:my-sql-connection host="#[vars.tenantDetails.dbHost]" port="3306" user="#[vars.tenantDetails.dbUser]" password="#[vars.tenantDetails.dbPassword]" database="#[vars.tenantDetails.dbName]" />
 	</db:config>
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="ed7ebe05-d70d-4b16-8836-bf8a5c4c6a76" file="${mule.env}-config.yaml" key="${encryption.key}"/>
-	<api-gateway:autodiscovery apiId="${api.id}" doc:name="API Autodiscovery" doc:id="0254834b-559a-4bf0-b456-01c63117dd8d" flowRef="api-main" />
+	<!-- <api-gateway:autodiscovery apiId="${api.id}" doc:name="API Autodiscovery" doc:id="0254834b-559a-4bf0-b456-01c63117dd8d" flowRef="api-main" /> -->
 	
 	<!-- admin request -->
 	<http:request-config name="HTTP_Request_Configuration_Admin" doc:name="HTTP Request configuration" doc:id="dce3a92c-e30c-4139-8d9e-f254aff92c23" >

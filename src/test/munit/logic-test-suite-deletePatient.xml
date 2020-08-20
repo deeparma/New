@@ -107,7 +107,7 @@
 		</munit:validation>
 	</munit:test>
 	
-	<munit:test name="logic-test-suite-deletePatient" doc:id="ecb3b678-d19c-4b96-9e79-d3cc99f0ebb4" description="Test" ignore="true">
+	<munit:test name="logic-test-suite-deletePatient" doc:id="ecb3b678-d19c-4b96-9e79-d3cc99f0ebb4" description="Test">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock Select Patient Result" doc:id="c426d2f3-b816-432f-9b5a-a4f6ed9eb921" processor="db:select">
 				<munit-tools:with-attributes >
@@ -151,7 +151,12 @@
 			<munit:set-event doc:name="Set Event" doc:id="2dcf130d-07e9-4895-bbe9-d008a4305edb" >
 				<munit:attributes value="#[{uriParams:{'siteId':'1','patientId':'1'}}]" />
 			</munit:set-event>
-			<flow-ref doc:name="Flow-ref to delete:\platform\sites\(siteId)\patients\(patientId):api-config" doc:id="05219162-30d1-4cfa-8e05-28e8f643a75e" name="delete:\platform\sites\(siteId)\patients\(patientId):api-config" />
+			<try doc:name="Try" doc:id="9ac51e45-0c15-4d50-a362-1aa0030b6a2c" >
+				<flow-ref doc:name="Flow-ref to delete:\platform\sites\(siteId)\patients\(patientId):api-config" doc:id="05219162-30d1-4cfa-8e05-28e8f643a75e" name="delete:\platform\sites\(siteId)\patients\(patientId):api-config" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="ca129275-e57d-4150-b641-6f9a1b836c53" type="DB:CONNECTIVITY"/>
+				</error-handler>
+			</try>
 		</munit:execution>
 		<munit:validation >
 			<munit-tools:verify-call doc:name="Verify call" doc:id="cfec318f-ce14-4c06-b522-a702fd96b980" processor="logger" times="1">
