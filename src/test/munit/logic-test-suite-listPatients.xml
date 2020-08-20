@@ -111,7 +111,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		</munit:validation>
 	</munit:test>
 	
-	<munit:test name="logic-test-suite-listPatients-forInvestigator" doc:id="c2415a4d-3965-428a-beb5-e87b35458236" description="Test">
+	<munit:test name="logic-test-suite-listPatients-forInvestigator" doc:id="c2415a4d-3965-428a-beb5-e87b35458236" description="Test" ignore="true">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock when" doc:id="f9bfb2bc-4be2-403a-b741-56198dafbc51" processor="db:select">
 				<munit-tools:with-attributes >
